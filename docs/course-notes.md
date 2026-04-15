@@ -7,10 +7,12 @@ These notes are for the instructor running the Claude Skills demo.
 By the end of the session, attendees should understand:
 
 - what a Claude Skill is
+- what spec-driven development contributes before implementation starts
 - why skills are better than repeatedly pasting the same prompt playbook
 - how project-scoped skills are organized in a repository
 - how supporting files improve quality and consistency
 - how narrow skills map to common engineering workflows
+- how specs and skills complement each other during delivery
 
 ## Recommended audience
 
@@ -34,14 +36,16 @@ This workshop works best for:
 ### 45-minute version
 
 - 8 min — concepts and repo structure
+- 7 min — spec-driven development overview and example spec
 - 15 min — code review and test writer demos
 - 10 min — docs writer and refactor helper demos
-- 7 min — supporting files and design decisions
+- 5 min — supporting files and design decisions
 - 5 min — Q&A and adoption guidance
 
 ### 60-minute version
 
 - 10 min — concept framing and official structure
+- 10 min — spec-driven workflow and example feature spec
 - 15 min — code review demo
 - 10 min — test writer demo
 - 10 min — docs writer and refactor helper demos
@@ -54,14 +58,17 @@ This workshop works best for:
 
 Show:
 - `.claude/skills/`
+- `.claude/specs/`
 - `sample-app/`
 - `docs/`
 - `demo-prompts.md`
 
 Talking points:
 - Skills are committed with the project, so they become shared team assets
+- Specs are committed with the project, so feature intent survives across sessions
 - Each skill is a directory, not just a single prompt line
 - `SKILL.md` is the entrypoint, but the support files carry deeper guidance
+- Specs are not skills; they are feature-specific artifacts that guide implementation
 
 ## 2. Explain the sample app
 
@@ -77,7 +84,26 @@ Call out:
 Talking point:
 This is not meant to be a perfect app. It exists to make the skills visibly useful.
 
-## 3. Open one skill directory
+It also exists to provide a realistic feature target for spec-driven development.
+
+## 3. Open the spec-driven example
+
+Start with `.claude/specs/csv-validation-and-rejected-rows/`.
+
+Show:
+- `research.md`
+- `requirements.md`
+- `design.md`
+- `tasks.md`
+- `validation.md`
+
+Talking points:
+- The spec is the persistent source of truth for one feature
+- Research comes before implementation, not after the first bug
+- Tasks are derived from the design instead of improvised in chat
+- Validation is defined before code changes start
+
+## 4. Open one skill directory
 
 Start with `code-review`.
 
@@ -91,7 +117,7 @@ Talking points:
 - the main skill file gives the workflow and output contract
 - support files keep the main file short and reusable
 
-## 4. Run a natural prompt first
+## 5. Run a natural prompt first
 
 Suggested prompt:
 - Review the sample app and tell me what could break before we merge it.
@@ -101,7 +127,7 @@ Teaching goal:
 - show that a well-designed description matters
 - reinforce that skills can be invoked by Claude when relevant
 
-## 5. Run direct invocation next
+## 6. Run direct invocation next
 
 Suggested prompt:
 - `/code-review sample-app/src/parser.ts sample-app/tests/parser.test.ts`
@@ -111,7 +137,7 @@ Teaching goal:
 - explain how arguments become scope
 - show the difference between natural discovery and explicit use
 
-## 6. Compare a second skill
+## 7. Compare a second skill
 
 Recommended next skill:
 - `test-writer`
@@ -124,7 +150,7 @@ Talking points:
 - the test-writer skill behaves differently from the code-review skill on purpose
 - shared standards are encoded in the support files
 
-## 7. Finish with docs or refactoring
+## 8. Finish with docs or refactoring
 
 Recommended final prompts:
 - Improve the sample app README so a teammate understands what is intentionally broken and why.
@@ -132,10 +158,11 @@ Recommended final prompts:
 
 Talking points:
 - one repo can host multiple focused skills
+- one repo can also keep feature specs without turning them into skills
 - each skill serves a different workflow
 - the same sample codebase can support multiple demos cleanly
 
-## 8. Show one manual-only skill
+## 9. Show one manual-only skill
 
 Open `commit-helper`.
 
@@ -155,18 +182,21 @@ Talking points:
 - Claude can discover many skills automatically, but not this one
 - manual-only skills are ideal for actions with side effects
 - the repo now demonstrates both activation models clearly
+- spec artifacts stay useful regardless of whether a skill is auto or manual
 
 ## Core talking points
 
 Use these points throughout the session:
 
 - Skills encode reusable workflow, not just reusable wording
+- Specs encode intent, constraints, and sequencing for a specific change
 - Good skills are narrow, opinionated, and easy to trust
 - Support files make a skill scale beyond a single markdown file
 - Project-scoped skills are practical for teams because they live with the repo
 - Skill design matters as much as prompt wording
 - A skill should improve consistency, not just verbosity
 - Manual-only skills are best when timing and user intent must be explicit
+- Specs reduce drift, recover context after bad sessions, and make larger changes easier to resume
 
 ## Questions to ask the audience
 
@@ -174,6 +204,7 @@ Use these prompts to make the session interactive:
 
 - Where do you currently repeat the same instructions to AI tools?
 - Which workflows in your team need more consistency?
+- Which changes in your team are large enough to deserve a written spec before coding?
 - Which of these four skills would be most useful in your own repos?
 - What team-specific checklist or rubric could be turned into a skill?
 
@@ -182,6 +213,10 @@ Use these prompts to make the session interactive:
 ### Why not just use a long prompt?
 
 Because skills are easier to reuse, easier to share, and easier to maintain than copying the same long prompt into every conversation.
+
+### Why add specs if we already have skills?
+
+Because a spec solves a different problem. Skills define reusable workflow. Specs define the intended behavior, design choices, task breakdown, and validation for one concrete feature.
 
 ### Why separate support files from SKILL.md?
 
@@ -207,6 +242,7 @@ If you want to reinforce manual-only behavior:
 - explain that commit creation is intentionally excluded from automatic invocation
 
 If time runs short:
+- show the spec folder plus one skill only
 - show only `code-review` and `test-writer`
 - use the sample app README and report module as examples of future docs/refactor demos
 

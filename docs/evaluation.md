@@ -12,6 +12,14 @@ Across all skills, strong output should be:
 - appropriately narrow for the task
 - practical enough that a teammate could act on it immediately
 
+Across spec artifacts, strong output should be:
+
+- explicit about the problem and intended outcome
+- scoped tightly enough to finish and review
+- grounded in the current codebase instead of idealized redesigns
+- sequenced into implementation-friendly tasks
+- clear about validation and completion criteria
+
 Weak output is usually:
 - vague
 - repetitive
@@ -20,6 +28,41 @@ Weak output is usually:
 - too broad for the requested task
 
 ## Skill-by-skill rubric
+
+## 0. Spec-driven artifacts
+
+### Strong output
+
+A strong spec set:
+- captures research or codebase observations before proposing changes
+- defines acceptance criteria and non-goals clearly
+- identifies impacted files and design constraints
+- breaks work into small, ordered tasks
+- defines how success will be validated before coding begins
+
+### Weak output
+
+A weak spec set:
+- jumps straight to implementation details without framing the problem
+- mixes goals, design, and tasks into one vague document
+- omits non-goals and leaves scope open-ended
+- cannot explain how the feature will be verified
+- is generic enough to fit any project
+
+### Good benchmark tasks
+
+Use prompts such as:
+- Research the parser flow and write a spec for rejected-row reporting.
+- Review `.claude/specs/csv-validation-and-rejected-rows/` and tell me what is still ambiguous.
+- Turn this feature request into requirements, design, tasks, and validation docs before coding.
+
+### What success should surface in this repo
+
+A good spec should notice and document things like:
+- current parser rows are silently dropped with no operator feedback
+- whitespace, invalid numeric values, and negative units need explicit handling decisions
+- reporting rejected rows affects parsing, report output, tests, and docs
+- validation should cover both parsed events and rejected-row behavior
 
 ## 1. Code review
 
@@ -220,5 +263,10 @@ After each live demo, ask attendees:
 - Did it use evidence from the code or docs?
 - Did it feel different from a generic prompt answer?
 - Would you trust this as a reusable team workflow?
+
+For spec artifacts, also ask:
+- Would this spec let a new session resume implementation safely?
+- Are the acceptance criteria concrete enough to verify?
+- Are the tasks small enough to execute without rethinking the whole feature?
 
 If most answers are yes, the skill design is doing its job.

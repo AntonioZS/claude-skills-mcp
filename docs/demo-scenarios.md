@@ -2,6 +2,19 @@
 
 These scenarios define the teaching moments the repository should support during the GenAI course.
 
+## Scenario 0 — Introduce spec-driven development
+
+**Goal**
+Show that the repo teaches both reusable skills and feature-specific specs.
+
+**What to show**
+- `.claude/specs/README.md`
+- the example feature under `.claude/specs/csv-validation-and-rejected-rows/`
+- the progression from research to requirements, design, tasks, and validation
+
+**Teaching outcome**
+Attendees understand that spec-driven development creates a persistent source of truth before coding starts, and that it complements rather than replaces skills.
+
 ## Scenario 1 — Explain what a Claude Skill is
 
 **Goal**
@@ -82,12 +95,28 @@ Position skills as shared operational knowledge for engineering teams.
 **Teaching outcome**
 Attendees leave with a practical template they can adapt in their own repos.
 
+## Scenario 7 — Show specs and skills working together
+
+**Goal**
+Demonstrate that a feature spec can guide the work while skills handle focused execution tasks.
+
+**What to show**
+- derive implementation steps from `.claude/specs/csv-validation-and-rejected-rows/tasks.md`
+- use `test-writer` to cover parser changes
+- use `docs-writer` to explain the feature in the sample app
+- use `code-review` or `refactor-helper` after implementation
+
+**Teaching outcome**
+Attendees see a practical division of responsibilities: the spec anchors intent, and the skills accelerate execution.
+
 ## Recommended live demo order
 
 1. Show the repo structure
-2. Open the first skill directory
-3. Explain `SKILL.md` frontmatter and instructions
-4. Show the supporting checklist/template files
-5. Run a prompt that naturally triggers the skill
-6. Run a prompt that invokes the skill directly
-7. Compare results and discuss why the structure matters
+2. Open the spec-driven example folder
+3. Explain why specs are feature-specific and skills are reusable
+4. Open the first skill directory
+5. Explain `SKILL.md` frontmatter and instructions
+6. Show the supporting checklist/template files
+7. Run a prompt that naturally triggers the skill
+8. Run a prompt that invokes the skill directly
+9. Compare results and discuss why the structure matters
