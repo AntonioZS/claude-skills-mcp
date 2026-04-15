@@ -1,0 +1,17 @@
+{
+  "name": "claude-skills-sample-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tiny TypeScript sample app used to demo Claude Skills.",
+  "scripts": {
+    "build": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2"
+  }
+}
