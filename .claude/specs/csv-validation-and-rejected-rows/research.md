@@ -36,9 +36,9 @@ The sample app parser currently accepts a CSV string and silently drops rows tha
 
 ## Open questions
 
-- Should rejected rows be surfaced only through parser output, or also through the operations report?
-- Should whitespace be normalized on all string fields, or only validated more strictly?
-- Do we want to reject `0` units or only negative and invalid values?
+- Resolved: rejected rows are surfaced through both parser output and an optional summary in the operations report.
+- Resolved: whitespace is normalized on all parsed string fields before validation.
+- Resolved: `0` units remain allowed; blank, invalid, and negative values are rejected.
 
 ## Notes to carry forward
 
@@ -52,3 +52,10 @@ The sample app parser currently accepts a CSV string and silently drops rows tha
 - Assumptions to validate:
   - Reporting rejected rows in a summary is more useful for the course than throwing on first error.
   - The sample app should still support simple happy-path usage after the change.
+
+## Implementation outcome
+
+- The parser now returns `accepted` and `rejected` collections.
+- Blank `units` are treated as `missing-field` rather than coercing to `0`.
+- The report builder accepts an optional `rejectedRows` argument and summarizes reasons by count.
+- Pricing logic remains unchanged and still operates on accepted events only.

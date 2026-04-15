@@ -1,13 +1,17 @@
 # Tasks
 
+## Status
+
+- All planned tasks for the first implementation pass are complete.
+
 ## Task breakdown
 
-1. Update parser types and return shape so parsing yields accepted events plus rejected rows.
-2. Implement field normalization and explicit validation for missing fields, invalid plans, invalid numeric units, and negative units.
-3. Expand parser tests to cover accepted rows, whitespace handling, and each rejection path.
-4. Update report generation so a caller can include rejected-row counts or reasons in the operations report.
-5. Refresh sample app documentation to explain the new parser behavior and why the example feature exists.
-6. Run targeted tests and verify the report output remains readable.
+1. Completed — updated parser types and return shape so parsing yields accepted events plus rejected rows.
+2. Completed — implemented field normalization and explicit validation for missing fields, invalid plans, invalid numeric units, and negative units.
+3. Completed — expanded parser tests to cover accepted rows, whitespace handling, header-only input, and each rejection path.
+4. Completed — updated report generation so a caller can include rejected-row counts or reasons in the operations report.
+5. Completed — refreshed sample app documentation to explain the new parser behavior and why the example feature exists.
+6. Completed — ran targeted tests and verified the report output remains readable.
 
 ## Sequencing notes
 
@@ -24,3 +28,8 @@
 - Tests cover the main validation rules and continue to pass.
 - The report can surface partial-import information clearly.
 - Documentation reflects the new behavior.
+
+## Follow-up candidates
+
+- Decide whether unknown regions should become explicit validation errors in a separate future spec.
+- Decide whether row-by-row rejected-row detail is worth adding to the report output later.
