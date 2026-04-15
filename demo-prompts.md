@@ -76,7 +76,18 @@ Refactor the report module to make it easier to maintain without changing behavi
 ### Teaching goal
 Show that a refactor skill emphasizes scope control, behavior preservation, and validation.
 
-## 8. Multi-step classroom sequence
+## 8. Demo a manual-only skill with side effects
+
+### Prompt
+/commit-helper sample-app/README.md
+
+### Teaching goal
+Show that some skills should only run when explicitly invoked because they stage files and can write git history.
+
+### Good talking point
+This is the cleanest example of `disable-model-invocation: true`: Claude should not decide on its own when to create a commit.
+
+## 9. Multi-step classroom sequence
 
 ### Prompt sequence
 1. Review the parser and pricing logic for bugs or risky assumptions.
@@ -87,14 +98,15 @@ Show that a refactor skill emphasizes scope control, behavior preservation, and 
 ### Teaching goal
 Show how separate narrow skills can work across the same repo and reinforce team workflows.
 
-## 9. Suggested talking points during the demo
+## 10. Suggested talking points during the demo
 
 - The skill descriptions help Claude know when to load a skill automatically.
 - `SKILL.md` is the entrypoint, but the support files carry deeper guidance.
 - Narrow skills are easier to trust and easier for teams to maintain.
 - The same sample app supports review, testing, documentation, and refactoring workflows.
+- Manual-only skills are the right fit when a workflow changes repo state or affects external systems.
 
-## 10. Reset prompt if the audience gets lost
+## 11. Reset prompt if the audience gets lost
 
 ### Prompt
 Explain the difference between a normal prompt and a Claude Skill using this repo as the example.

@@ -135,6 +135,27 @@ Talking points:
 - each skill serves a different workflow
 - the same sample codebase can support multiple demos cleanly
 
+## 8. Show one manual-only skill
+
+Open `commit-helper`.
+
+Show:
+- `.claude/skills/commit-helper/SKILL.md`
+- `.claude/skills/commit-helper/preflight-checklist.md`
+
+Suggested prompt:
+- `/commit-helper sample-app/README.md`
+
+Teaching goal:
+- show `disable-model-invocation: true` in a realistic case
+- explain why commits are a bad candidate for automatic invocation
+- contrast "safe analysis" skills with "state-changing" skills
+
+Talking points:
+- Claude can discover many skills automatically, but not this one
+- manual-only skills are ideal for actions with side effects
+- the repo now demonstrates both activation models clearly
+
 ## Core talking points
 
 Use these points throughout the session:
@@ -145,6 +166,7 @@ Use these points throughout the session:
 - Project-scoped skills are practical for teams because they live with the repo
 - Skill design matters as much as prompt wording
 - A skill should improve consistency, not just verbosity
+- Manual-only skills are best when timing and user intent must be explicit
 
 ## Questions to ask the audience
 
@@ -179,6 +201,10 @@ If automatic invocation does not trigger cleanly:
 - use direct invocation from `demo-prompts.md`
 - open the skill files and explain the structure manually
 - compare the direct-invocation result to a generic prompt result
+
+If you want to reinforce manual-only behavior:
+- open `commit-helper` and point to `disable-model-invocation: true`
+- explain that commit creation is intentionally excluded from automatic invocation
 
 If time runs short:
 - show only `code-review` and `test-writer`

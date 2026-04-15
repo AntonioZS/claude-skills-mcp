@@ -28,6 +28,10 @@ claude-skills-mcp/
 │       │   ├── SKILL.md
 │       │   ├── doc-template.md
 │       │   └── examples.md
+│       ├── commit-helper/
+│       │   ├── SKILL.md
+│       │   ├── preflight-checklist.md
+│       │   └── examples.md
 │       └── refactor-helper/
 │           ├── SKILL.md
 │           ├── refactor-rules.md
@@ -94,6 +98,14 @@ Use for safe cleanup, naming improvements, and simplification without changing b
 **Supporting files**
 - `refactor-rules.md` for safety constraints and validation expectations
 - `examples.md` for acceptable refactor patterns
+
+### `commit-helper`
+
+Use for deliberate staging and commit creation when you want manual control over git side effects.
+
+**Supporting files**
+- `preflight-checklist.md` for scope, validation, and history hygiene checks
+- `examples.md` for strong commit-planning outputs
 
 ## Planned sample app characteristics
 

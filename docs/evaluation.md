@@ -158,6 +158,40 @@ A good refactor should improve areas like:
 - clarifying intermediate pricing variables
 - isolating parser validation steps for readability
 
+## 5. Commit helper
+
+### Strong output
+
+A strong `commit-helper` result:
+- clearly narrows the commit scope
+- avoids staging unrelated changes
+- recommends appropriate validation before committing
+- proposes a clean, reviewable commit message
+- makes it explicit whether a commit was actually created
+
+### Weak output
+
+A weak `commit-helper` result:
+- stages everything in the working tree without checking scope
+- ignores unrelated diffs or missing validation
+- proposes vague commit messages
+- creates a commit despite ambiguous user intent
+
+### Good benchmark tasks
+
+Use prompts such as:
+- `/commit-helper sample-app/README.md`
+- `/commit-helper parser tests only`
+- Prepare a commit for the docs updates, but do not include refactor changes.
+
+### What success should surface in this repo
+
+A good commit workflow should:
+- isolate the intended file set
+- call out unrelated changes when present
+- suggest running `npm test` in `sample-app` when relevant
+- keep commit messages specific and imperative
+
 ## Simple scoring rubric
 
 For a quick classroom score, rate each skill output from 1 to 3.

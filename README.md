@@ -49,7 +49,11 @@ The course demo will focus on four practical skills:
 - `docs-writer` — concise documentation updates for developers
 - `refactor-helper` — behavior-preserving cleanup and simplification
 
-These were selected because they map cleanly to common engineering workflows and are easy to demo live.
+To illustrate manual-only workflows with side effects, the repo also includes:
+
+- `commit-helper` — a manual-only commit workflow that stages files and creates git history intentionally
+
+These were selected because they map cleanly to common engineering workflows and are easy to demo live while also showing the difference between auto-invocable and manual-only skills.
 
 ## Why this structure works for a course
 
